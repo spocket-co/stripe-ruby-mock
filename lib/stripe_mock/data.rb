@@ -1106,7 +1106,7 @@ module StripeMock
         capture_method: "automatic",
         charges: {
           object: "list",
-          data: Stripe::Charge.all.data,
+          data: Stripe::Charge.all.data || [],
           has_more: false,
           total_count: 1,
           url: "/v1/charges?payment_intent=pi_1EwXFB2eZvKYlo2CggNnFBo8"
