@@ -1,4 +1,4 @@
-=gamodule StripeMock
+module StripeMock
   module RequestHandlers
     module PaymentMethods
       ALLOWED_PARAMS = [:customer, :type]
