@@ -4,6 +4,13 @@ module StripeMock
     def self.mock_account(params = {})
       id = params[:id] || 'acct_103ED82ePvKYlo2C'
       currency = params[:currency] || StripeMock.default_currency
+
+      individual_params = mock_individual(params)
+      params.delete(:individual)
+
+      company_params = mock_company(params)
+      params.delete(:company)
+
       {
         id: id,
         email: "bob@example.com",
@@ -97,8 +104,93 @@ module StripeMock
         keys: {
           secret: "sk_test_AmJhMTLPtY9JL4c6EG0",
           publishable: "pk_test_2rSaMTLPtY9JL449dsf"
-        }
+        },
+        individual: individual_params,
+        company: company_params
       }.merge(params)
+    end
+
+    def self.mock_company(params)
+      {
+        address: {
+          city: nil,
+          country: "GB",
+          line1: nil,
+          line2: nil,
+          postal_code: nil,
+          state: nil
+        },
+        directors_provided:false,
+        executives_provided:false,
+        name: nil,
+        owners_provided:false,
+        tax_id_provided:false,
+        verification: {
+          document:{
+            back: nil,
+            details: nil,
+            details_code: nil,
+            front: nil
+          }
+        }
+      }.merge(params[:company] || {})
+    end
+
+    def self.mock_individual(params)
+      {
+        id: "person_GzN89zYWx16lCg",
+        object: "person",
+        account: "acct_1GROObBDMhY1eCau",
+        address: {
+          city: nil,
+          country:"GB",
+          line1: nil,
+          line2: nil,
+          postal_code: nil,
+          state: nil
+        },
+        created:1585339394,
+        dob: {
+          day: nil,
+          month: nil,
+          year: nil
+        },
+        first_name: nil,
+        last_name: nil,
+        metadata: {},
+        relationship: {
+          director:false,
+          executive:false,
+          owner:false,
+          percent_ownership: nil,
+          representative:true,
+          title: nil
+        },
+        requirements: {
+          currently_due:["address.city","address.line1","address.postal_code","dob.day","dob.month","dob.year","email","first_name","last_name","phone"],
+          errors:[],
+          eventually_due:["address.city","address.line1","address.postal_code","dob.day","dob.month","dob.year","email","first_name","last_name","phone"],
+          past_due:["address.city","address.line1","address.postal_code","dob.day","dob.month","dob.year","email","first_name","last_name","phone"],
+          pending_verification:[]
+        },
+        verification: {
+          additional_document: {
+            back: nil,
+            details: nil,
+            details_code: nil,
+            front: nil
+          },
+          details: nil,
+          details_code: nil,
+          document: {
+            back: nil,
+            details: nil,
+            details_code: nil,
+            front: nil
+          },
+          status:"unverified"
+        }
+      }.merge(params[:individual] || {})
     end
 
     def self.mock_tax_rate(params)
