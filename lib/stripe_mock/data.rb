@@ -440,7 +440,6 @@ module StripeMock
         quantity: 1,
         tax_percent: nil,
         discount: nil,
-        default_payment_method: nil,
         metadata: {}
       }, params)
     end
