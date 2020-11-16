@@ -231,7 +231,8 @@ module StripeMock
           url: "/v1/customers/#{cus_id}/sources",
           data: sources
         },
-        subscriptions: {
+        
+        s: {
           object: "list",
           total_count: 0,
           url: "/v1/customers/#{cus_id}/subscriptions",
@@ -439,6 +440,7 @@ module StripeMock
         quantity: 1,
         tax_percent: nil,
         discount: nil,
+        default_payment_method: 'pm_1Ho2rJCkyahf3M21F3Q1KhFy',
         metadata: {}
       }, params)
     end
