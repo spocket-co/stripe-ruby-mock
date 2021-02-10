@@ -231,8 +231,7 @@ module StripeMock
           url: "/v1/customers/#{cus_id}/sources",
           data: sources
         },
-        
-        s: {
+        subscriptions: {
           object: "list",
           total_count: 0,
           url: "/v1/customers/#{cus_id}/subscriptions",
