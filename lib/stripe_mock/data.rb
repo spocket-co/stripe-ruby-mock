@@ -114,9 +114,9 @@ module StripeMock
       id = params[:id] || 'acct_link_103ED82ePvKYlo2C'
       {
         id: id,
-        object: "account_link",
-        created:1615576124,
-        expires_at:1615576124,
+        object: 'account_link',
+        created: 1615576124,
+        expires_at: 1615576124,
         url: "https://test.stripe.com/setup/c/#{id}"
       }.merge(params)
     end
