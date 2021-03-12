@@ -110,6 +110,17 @@ module StripeMock
       }.merge(params)
     end
 
+    def self.mock_account_link(params = {})
+      id = params[:id] || 'acct_link_103ED82ePvKYlo2C'
+      {
+        id: id,
+        object: "account_link",
+        created:1615576124,
+        expires_at:1615576124,
+        url: "https://test.stripe.com/setup/c/#{id}"
+      }.merge(params)
+    end
+
     def self.mock_company(params)
       {
         address: {

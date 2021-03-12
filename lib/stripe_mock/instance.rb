@@ -24,6 +24,7 @@ module StripeMock
     include StripeMock::RequestHandlers::PaymentMethods
     include StripeMock::RequestHandlers::ExternalAccounts
     include StripeMock::RequestHandlers::Accounts
+    include StripeMock::RequestHandlers::AccountLinks
     include StripeMock::RequestHandlers::Balance
     include StripeMock::RequestHandlers::BalanceTransactions
     include StripeMock::RequestHandlers::Charges
@@ -49,7 +50,7 @@ module StripeMock
     include StripeMock::RequestHandlers::EphemeralKey
     include StripeMock::RequestHandlers::TaxRates
 
-    attr_reader :accounts, :balance, :balance_transactions, :bank_tokens, :charges, :coupons, :customers,
+    attr_reader :accounts, :account_links, :balance, :balance_transactions, :bank_tokens, :charges, :coupons, :customers,
                 :disputes, :events, :invoices, :invoice_items, :orders, :payment_intents, :payment_methods,
                 :plans, :recipients, :refunds, :transfers, :payouts, :subscriptions, :country_spec,
                 :subscriptions_items, :products, :tax_rates
@@ -58,6 +59,7 @@ module StripeMock
 
     def initialize
       @accounts = {}
+      @account_links = []
       @balance = Data.mock_balance
       @balance_transactions = Data.mock_balance_transactions(['txn_05RsQX2eZvKYlo2C0FRTGSSA','txn_15RsQX2eZvKYlo2C0ERTYUIA', 'txn_25RsQX2eZvKYlo2C0ZXCVBNM', 'txn_35RsQX2eZvKYlo2C0QAZXSWE', 'txn_45RsQX2eZvKYlo2C0EDCVFRT', 'txn_55RsQX2eZvKYlo2C0OIKLJUY', 'txn_65RsQX2eZvKYlo2C0ASDFGHJ', 'txn_75RsQX2eZvKYlo2C0EDCXSWQ', 'txn_85RsQX2eZvKYlo2C0UJMCDET', 'txn_95RsQX2eZvKYlo2C0EDFRYUI'])
       @bank_tokens = {}
