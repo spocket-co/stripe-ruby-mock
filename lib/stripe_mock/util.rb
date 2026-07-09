@@ -1,3 +1,5 @@
+require 'digest'
+
 module StripeMock
   module Util
 
@@ -26,7 +28,7 @@ module StripeMock
     end
 
     def self.fingerprint(source)
-      Digest::SHA1.base64digest(source).gsub(/[^a-z]/i, '')[0..15]
+      Digest::SHA256.base64digest(source).gsub(/[^a-z]/i, '')[0..15]
     end
 
     def self.card_merge(old_param, new_param)
